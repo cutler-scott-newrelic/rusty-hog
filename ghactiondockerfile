@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y openssl openssh-client ca-certificates
 COPY --from=builder /build/target/release/*_hog /usr/local/bin/
 ENV PATH=/usr/local/bin:$PATH
 COPY ./entrypoint.sh /usr/local/bin
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/ghactionentrypoint.sh
 RUN mkdir -p /toscan
 COPY . /toscan/
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/ghactionentrypoint.sh"]
