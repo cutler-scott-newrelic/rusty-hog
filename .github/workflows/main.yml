@@ -12,6 +12,8 @@ jobs:
       - name: Rusty Hog action step
         uses: ./ # Uses an action in the root directory
         id: rustyhog
+        with:
+          shavalue: ${{ github.sha }}
       # Use the output from the `hello` step
       - name: Get the output
         run: echo "${{ steps.rustyhog.outputs.jsonresult }}"

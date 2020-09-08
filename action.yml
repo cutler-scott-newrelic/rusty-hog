@@ -4,6 +4,11 @@ name: 'Rusty Hog GH Action Scanner'
 description: 'Runs the Rusty Hog Scanner against any commit using GH Actions and Docker'
 on: [push]
 
+inputs:
+  shavalue:
+    description: 'SHA value of the triggering commit'
+    required: true
+
 outputs:
   jsonresult:
     description: 'The JSON output of Rusty Hog'
@@ -12,4 +17,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ github.sha }}
+    - ${{ inputs.shavalue }}
